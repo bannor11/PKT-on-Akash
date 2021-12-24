@@ -4,10 +4,7 @@ services:
     image: chandrastation/pkt_on_akash
     env:
       - WALLET_ADDR=your-address-here
-      - POOL1=http://pool.pkteer.com
-      - POOL2=http://pool.pktpool.io
-      - POOL3=http://pool.pkt.world
-      - POOL4=http://pool.srizbi.com
+      - POOLS="http://pool.srizbi.com http://pool.pktpool.io http://pool.pkt.world http://pool.pkteer.com"
     expose:
       - port: 3000
         as: 80
@@ -21,9 +18,9 @@ profiles:
         cpu:
           units: 10
         memory:
-          size: 512Mi
+          size: 1Gi
         storage:
-          size: 512Mi
+          size: 1Gi
   placement:
     any:
       attributes:
@@ -40,4 +37,4 @@ deployment:
   main:
     any:
       profile: miner
-      count: 1
+      count: 2
